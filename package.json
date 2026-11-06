@@ -1,0 +1,22 @@
+{
+  "name": "grand-aurelia-hms",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Grand Aurelia Hotel Management System — REST API + staff dashboard",
+  "main": "server/index.js",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node server/index.js",
+    "dev:client": "npm run dev --prefix client",
+    "build": "npm run build --prefix client",
+    "seed": "node server/seed.js --reset"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}

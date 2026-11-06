@@ -1,0 +1,20 @@
+{
+  "name": "grand-aurelia-hms-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Grand Aurelia Hotel Management System - backend API",
+  "main": "index.js",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "seed": "node seed.js --reset"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}

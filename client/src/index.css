@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+
+  /* luxury palette */
+  --color-ink-950: #0A141E;
+  --color-ink-900: #0D1B28;
+  --color-ink-800: #13293B;
+  --color-ink-700: #1B3A50;
+  --color-ink-600: #255171;
+  --color-ink-500: #33638C;
+
+  --color-gold-600: #A8863C;
+  --color-gold-500: #C6A15B;
+  --color-gold-400: #D5B478;
+  --color-gold-300: #E5CDA0;
+  --color-gold-100: #F4EBD8;
+  --color-gold-50: #FAF6EC;
+
+  --color-canvas: #F4F5F7;
+  --color-line: #E7E9ED;
+
+  --shadow-card: 0 1px 2px rgb(16 24 40 / 0.04), 0 4px 16px -4px rgb(16 24 40 / 0.06);
+  --shadow-pop: 0 12px 40px -8px rgb(10 20 30 / 0.25);
+
+  --radius-2xl: 1.1rem;
+}
+
+html, body, #root { height: 100%; }
+
+body {
+  @apply bg-canvas text-slate-800 antialiased;
+  font-feature-settings: "ss01", "cv05";
+}
+
+/* elegant thin scrollbars */
+* { scrollbar-width: thin; scrollbar-color: #c9ccd4 transparent; }
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb { background: #c9ccd4; border-radius: 8px; }
+*::-webkit-scrollbar-track { background: transparent; }
+
+@utility card {
+  @apply bg-white border border-line rounded-2xl shadow-card;
+}
+
+@utility input-base {
+  @apply w-full rounded-xl border border-line bg-white px-3.5 py-2.5 text-sm text-slate-800 placeholder:text-slate-400
+         outline-none transition focus:border-gold-500 focus:ring-4 focus:ring-gold-500/10 disabled:bg-slate-50 disabled:text-slate-400;
+}
+
+@utility label-base {
+  @apply block text-[13px] font-semibold text-slate-600 mb-1.5;
+}
+
+/* Grand Aurelia monogram seal */
+.ga-seal {
+  background: radial-gradient(120% 120% at 30% 20%, #E5CDA0 0%, #C6A15B 45%, #A8863C 100%);
+}
+
+.sidebar-sheen {
+  background:
+    radial-gradient(90rem 24rem at -20% -10%, rgb(198 161 91 / 0.14), transparent 55%),
+    linear-gradient(180deg, #0E1E2D 0%, #0A141E 100%);
+}
+
+.hero-nights {
+  background:
+    radial-gradient(60rem 26rem at 85% 0%, rgb(198 161 91 / 0.25), transparent 55%),
+    linear-gradient(160deg, #0D1B28 0%, #13293B 55%, #0A141E 100%);
+}
+
+/* ---------- animations ---------- */
+@keyframes fade-up { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes modal-in { from { opacity: 0; transform: scale(.97) translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes slide-in-right { from { transform: translateX(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+
+.anim-fade-up { animation: fade-up .3s ease both; }
+.anim-modal { animation: modal-in .22s cubic-bezier(.2,.8,.3,1) both; }
+.anim-drawer { animation: slide-in-right .25s cubic-bezier(.2,.8,.3,1) both; }
+.live-dot { animation: pulse-dot 2s ease infinite; }
+
+/* ---------- print ---------- */
+.print-area { display: none; }
+@media print {
+  body { background: white !important; }
+  .app-shell, .no-print, .topbar-print-hide { display: none !important; }
+  .print-area { display: block !important; position: static; padding: 0 !important; background: white !important; }
+  .print-page { box-shadow: none !important; border: none !important; margin: 0 !important; max-width: 100% !important; }
+  @page { margin: 14mm; }
+}
